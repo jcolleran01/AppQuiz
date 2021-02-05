@@ -1,8 +1,14 @@
 <resources>
     <string name="app_name">GeoQuiz</string>
-    <string name="question_text">The first Lion King movie came out in 1994</string>
+    <string name="question_lionking">The first Lion King movie came out in 1994</string>
+    <string name="question_starwars">there are 11 star wars films</string>
+    <string name="question_indianajones">Harrison ford starred in the Indian Jones movies</string>
+    <string name="question_startrek">Spock is the captain of the star ship enterprise in star trek</string>
+    <string name="question_jaws">The breed of shark in Jaws was a great white sharl</string>
+    <string name="question_harrypotter">Ron has three siboling in harry potter</string>
     <string name="true_button">True</string>
     <string name="false_button">False</string>
     <string name="correct_toast">Correct!</string>
     <string name="incorrect_toast">Incorrect!</string>
+    <string name="next_button">Next</string>
 </resources>
