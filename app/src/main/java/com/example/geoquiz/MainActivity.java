@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Button mTrueButton;
     private Button mFalseButton;
     private Button mNextButton;
+    private Button mpreviousButton;
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[] {
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
+        mQuestionTextView.setOnClickListener(this);
         //updateQuestion();
 
         mTrueButton = (Button) findViewById(R.id.true_button);
@@ -45,11 +47,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mNextButton = (Button) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(this);
 
+        mpreviousButton = (Button) findViewById(R.id.previousbutton);
+        mpreviousButton.setOnClickListener(this);
+
     }
     private void updateQuestion(){
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
     }
+
 
     private void checkAnswer(boolean userPressedTrue){
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
@@ -80,9 +86,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         else if (v.getId() == R.id.false_button){
             checkAnswer(false);
         }
-        else if (v.getId() == R.id.next_button){
+        else if (v.getId() == R.id.next_button || v.getId() == R.id.question_text_view){
             mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
             updateQuestion();
+        }
+        else if (v.getId() == R.id.previousbutton){
+           if (mCurrentIndex > 0){
+               mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+               updateQuestion();
+           }
         }
     }
 
