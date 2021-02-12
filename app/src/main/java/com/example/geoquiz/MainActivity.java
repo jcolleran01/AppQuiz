@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.Toast;
 import android.widget.TextView;
 
@@ -14,8 +15,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button mNextButton;
-    private Button mpreviousButton;
+    private ImageButton mNextButton;
+    private ImageButton mpreviousButton;
     private TextView mQuestionTextView;
 
     private Question[] mQuestionBank = new Question[] {
@@ -44,10 +45,10 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mFalseButton = (Button) findViewById(R.id.false_button);
         mFalseButton.setOnClickListener(this);
 
-        mNextButton = (Button) findViewById(R.id.next_button);
+        mNextButton = (ImageButton) findViewById(R.id.next_button);
         mNextButton.setOnClickListener(this);
 
-        mpreviousButton = (Button) findViewById(R.id.previousbutton);
+        mpreviousButton = (ImageButton) findViewById(R.id.previousbutton);
         mpreviousButton.setOnClickListener(this);
 
     }
