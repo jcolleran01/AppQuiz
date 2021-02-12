@@ -10,7 +10,7 @@ import android.widget.Toast;
 import android.widget.TextView;
 
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button mTrueButton;
     private Button mFalseButton;
@@ -34,32 +34,17 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         mQuestionTextView = (TextView) findViewById(R.id.question_text_view);
-        updateQuestion();
+        //updateQuestion();
 
         mTrueButton = (Button) findViewById(R.id.true_button);
-        mTrueButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkAnswer(true);
-            }
-        });
+        mTrueButton.setOnClickListener(this);
 
         mFalseButton = (Button) findViewById(R.id.false_button);
-        mFalseButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                checkAnswer(false);
-            }
-        });
+        mFalseButton.setOnClickListener(this);
 
         mNextButton = (Button) findViewById(R.id.next_button);
-        mNextButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-                updateQuestion();
-            }
-        });
+        mNextButton.setOnClickListener(this);
+
     }
     private void updateQuestion(){
         int question = mQuestionBank[mCurrentIndex].getTextResId();
@@ -69,21 +54,36 @@ public class MainActivity extends AppCompatActivity {
     private void checkAnswer(boolean userPressedTrue){
         boolean answerIsTrue = mQuestionBank[mCurrentIndex].isAnswerTrue();
 
-        int messageResId = 0;
+        String messageResId = "";
 
         if(userPressedTrue == answerIsTrue){
-            messageResId = R.string.correct_toast;
+            messageResId = "Correct!";
         }
         else{
-            messageResId = R.string.incorrect_toast;
+            messageResId = "Incorrect!";
         }
-        Toast.makeText(this, messageResId, Toast.LENGTH_SHORT).show();
+        Toast toast = Toast.makeText(this, messageResId, Toast.LENGTH_SHORT);
+        toast.show();
     }
 
     public void show(String toastDisplay){
         Toast toast = Toast.makeText(MainActivity.this, toastDisplay, Toast.LENGTH_SHORT);
         toast.setGravity(Gravity.TOP, 0, 200);
         toast.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.true_button){
+            checkAnswer(true);
+        }
+        else if (v.getId() == R.id.false_button){
+            checkAnswer(false);
+        }
+        else if (v.getId() == R.id.next_button){
+            mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
+            updateQuestion();
+        }
     }
 
     public static class Question {
