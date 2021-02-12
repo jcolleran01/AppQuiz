@@ -11,13 +11,14 @@
         android:id="@+id/question_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="163dp"
+        android:layout_marginBottom="164dp"
         android:padding="24dp"
         android:text="@string/question_lionking"
-        app:layout_constraintBottom_toTopOf="@+id/linearLayout"
+        app:layout_constraintBottom_toTopOf="@+id/next_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/linearLayout"
@@ -26,8 +27,7 @@
         app:layout_constraintBottom_toTopOf="@+id/next_button"
         app:layout_constraintEnd_toEndOf="@+id/next_button"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/next_button"
-        app:layout_constraintTop_toBottomOf="@+id/question_text_view">
+        app:layout_constraintStart_toEndOf="@+id/next_button">
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -38,7 +38,8 @@
         android:drawablePadding="4dp"
         android:text="@string/next_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/previousbutton"
-        app:layout_constraintStart_toStartOf="@+id/false_button" />
+        app:layout_constraintStart_toStartOf="@+id/false_button"
+        android:drawableRight="@drawable/arrow_right"/>
 
     <Button
         android:id="@+id/previousbutton"
@@ -47,26 +48,27 @@
         android:layout_marginTop="3dp"
         android:text="Prev"
         app:layout_constraintStart_toStartOf="@+id/true_button"
-        app:layout_constraintTop_toBottomOf="@+id/false_button" />
+        app:layout_constraintTop_toBottomOf="@+id/false_button"
+        android:drawableLeft="@drawable/arrow_left"/>
 
     <Button
         android:id="@+id/false_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="71dp"
-        android:layout_marginRight="71dp"
+        android:layout_marginEnd="112dp"
+        android:layout_marginRight="112dp"
         android:text="@string/false_button"
         app:layout_constraintBaseline_toBaselineOf="@+id/true_button"
-        app:layout_constraintEnd_toEndOf="@+id/question_text_view" />
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/true_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="343dp"
-        android:layout_marginEnd="87dp"
-        android:layout_marginRight="87dp"
+        android:layout_marginEnd="86dp"
+        android:layout_marginRight="86dp"
         android:text="@string/true_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/false_button"
         app:layout_constraintTop_toTopOf="parent" />
 
