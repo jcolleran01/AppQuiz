@@ -142,24 +142,25 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             mTrueButton.setEnabled(questionBooleans[mCurrentIndex]);
             mFalseButton.setEnabled(questionBooleans[mCurrentIndex]);
             //mTrueButton.setEnabled(false);
+            if (mCurrentIndex == mQuestionBank.length - 1){
+                show(String.valueOf(100 * (double) answersCorrect/mQuestionBank.length));
+            }
         }
         else if (v.getId() == R.id.false_button){
             checkAnswer(false);
             questionBooleans[mCurrentIndex] = false;
             mTrueButton.setEnabled(questionBooleans[mCurrentIndex]);
             mFalseButton.setEnabled(questionBooleans[mCurrentIndex]);
+            if (mCurrentIndex == mQuestionBank.length - 1){
+                show(String.valueOf(100 * (double) answersCorrect/mQuestionBank.length));
+            }
            // mFalseButton.setEnabled(false);
         }
         else if (v.getId() == R.id.next_button || v.getId() == R.id.question_text_view){
             mCurrentIndex = (mCurrentIndex + 1);
             mTrueButton.setEnabled(questionBooleans[mCurrentIndex]);
             mFalseButton.setEnabled(questionBooleans[mCurrentIndex]);
-            if (mCurrentIndex != mQuestionBank.length - 1){
-                updateQuestion();
-            }
-            else {
-                show(String.valueOf(100 * (double) answersCorrect/mQuestionBank.length));
-            }
+            updateQuestion();
             //i
         }
         else if (v.getId() == R.id.previousbutton){
