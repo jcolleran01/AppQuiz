@@ -160,7 +160,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             else {
                 show(String.valueOf(100 * (double) answersCorrect/mQuestionBank.length));
             }
-
+            //i
         }
         else if (v.getId() == R.id.previousbutton){
            if (mCurrentIndex > 0){
