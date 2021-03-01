@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private ImageButton mNextButton;
     private ImageButton mpreviousButton;
     private TextView mQuestionTextView;
+    private int answersCorrect;
 
     private Question[] mQuestionBank = new Question[] {
             new Question(R.string.question_lionking, true),
@@ -32,10 +33,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             new Question(R.string.question_harrypotter, true),
     };
 
+    boolean[] questionBooleans = new boolean[]{true, true, true, true, true, true};
+
+
     private int mCurrentIndex = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         Log.d(TAG, "onCreate(Bundle) called");
         setContentView(R.layout.activity_main);
@@ -102,6 +107,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private void updateQuestion(){
         int question = mQuestionBank[mCurrentIndex].getTextResId();
         mQuestionTextView.setText(question);
+        /*mTrueButton.setEnabled(questionBooleans[mCurrentIndex]);
+        mFalseButton.setEnabled(questionBooleans[mCurrentIndex]);*/
     }
 
 
@@ -112,6 +119,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         if(userPressedTrue == answerIsTrue){
             messageResId = "Correct!";
+            answersCorrect++;
         }
         else{
             messageResId = "Incorrect!";
@@ -130,17 +138,35 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v.getId() == R.id.true_button){
             checkAnswer(true);
+            questionBooleans[mCurrentIndex] = false;
+            mTrueButton.setEnabled(questionBooleans[mCurrentIndex]);
+            mFalseButton.setEnabled(questionBooleans[mCurrentIndex]);
+            //mTrueButton.setEnabled(false);
         }
         else if (v.getId() == R.id.false_button){
             checkAnswer(false);
+            questionBooleans[mCurrentIndex] = false;
+            mTrueButton.setEnabled(questionBooleans[mCurrentIndex]);
+            mFalseButton.setEnabled(questionBooleans[mCurrentIndex]);
+           // mFalseButton.setEnabled(false);
         }
         else if (v.getId() == R.id.next_button || v.getId() == R.id.question_text_view){
-            mCurrentIndex = (mCurrentIndex + 1) % mQuestionBank.length;
-            updateQuestion();
+            mCurrentIndex = (mCurrentIndex + 1);
+            mTrueButton.setEnabled(questionBooleans[mCurrentIndex]);
+            mFalseButton.setEnabled(questionBooleans[mCurrentIndex]);
+            if (mCurrentIndex != mQuestionBank.length - 1){
+                updateQuestion();
+            }
+            else {
+                show(String.valueOf(100 * (double) answersCorrect/mQuestionBank.length));
+            }
+
         }
         else if (v.getId() == R.id.previousbutton){
            if (mCurrentIndex > 0){
-               mCurrentIndex = (mCurrentIndex - 1) % mQuestionBank.length;
+               mCurrentIndex = (mCurrentIndex - 1);
+               mTrueButton.setEnabled(questionBooleans[mCurrentIndex]);
+               mFalseButton.setEnabled(questionBooleans[mCurrentIndex]);
                updateQuestion();
            }
         }
