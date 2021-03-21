@@ -3,6 +3,7 @@ package com.example.geoquiz;
 public class Question {
     private int mTextResId;
     private boolean mAnswerTrue;
+    private boolean mIsCheated;
 
     public int getTextResId(){
         return mTextResId;
@@ -22,5 +23,12 @@ public class Question {
     public Question(int textResId, boolean answerTrue){
         mTextResId = textResId;
         mAnswerTrue = answerTrue;
+    }
+    public boolean getIfCheated(){
+        return mIsCheated;
+    }
+
+    public void determineCheated(boolean cleanOrCheat){
+        mIsCheated = cleanOrCheat;
     }
 }
