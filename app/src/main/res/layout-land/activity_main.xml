@@ -7,9 +7,10 @@
 
 
     <TextView
-        android:id="@+id/textview"
+        android:id="@+id/question_text_view"
         android:layout_width="294dp"
         android:layout_height="0dp"
+        android:text="@string/question_lionking"
         android:layout_marginTop="25dp"
         android:layout_marginBottom="23dp"
         android:padding="24dp"
@@ -25,7 +26,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|center_horizontal"
         android:text="@string/cheat_button"
-        app:layout_constraintBottom_toTopOf=""
+        app:layout_constraintBottom_toTopOf="144dp"
         app:layout_constraintEnd_toStartOf=""
         tools:layout_editor_absoluteX="339dp"
         tools:layout_editor_absoluteY="264dp" />
